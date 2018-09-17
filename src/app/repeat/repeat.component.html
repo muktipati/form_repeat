@@ -1,0 +1,95 @@
+<div>
+  <div class="container">
+    <form class="form-group" #f="ngForm" (click)="submit(f)">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" #name="ngModel" name="name" id="name" ngModel required>
+            <div class="alert alert-danger" *ngIf='name.touched && name.invalid'>
+              Please enter your name
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="productGroup">Product Group:</label>
+            <select class="form-control" #productGroup="ngModel" name="productGroup" ngModel required>
+
+              <option value="abc">abc</option>
+              <option value="xyz">xyz</option>
+              <option value="cvbg">cvbg</option>
+              <option value="mnjk">mnjk</option>
+            </select>
+            <div class="alert alert-danger" *ngIf='productGroup.touched && productGroup.invalid'>
+              Please select a productGroup
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngFor="let n of newItem;let i=index" f="i">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="unitValue">Unit Value:</label>
+              <input type="number" class="form-control" #unitValue="ngModel" name="unitValue{{i}}" ngModel required
+                [min]='2'>
+                <span>{{"="}}</span>
+            </div>
+            <div class="alert alert-danger" *ngIf='unitValue.touched && unitValue.invalid'>
+              <div *ngIf='unitValue.errors.required'> price is required</div>
+              <div *ngIf='unitValue.errors.min'>Unit value should be 2 or higher</div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="unitType">Unit type:</label>
+              <select class="form-control" #unitType="ngModel" name="unitType{{i}}" ngModel required>
+                <option value="CM">CM</option>
+                <option value="MM">MM</option>
+                <option value="KM">KM</option>
+                <option value="KG">KG</option>
+              </select>
+              <div class="alert alert-danger" *ngIf='unitType.touched && unitType.invalid'>
+                Please select a unitType
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <div class="">
+                <label for="unitvalue2">Unit Value:</label>
+                <input type="number" class="form-control" #unitvalue2="ngModel" name="unitvalue2{{i}}" ngModel required
+                  [min]='2'>
+              </div>
+              <div class="alert alert-danger" *ngIf='unitvalue2.touched && unitvalue2.invalid'>
+                <div *ngIf='unitvalue2.errors.required'> price is required</div>
+                <div *ngIf='unitvalue2.errors.min'>Unit value should be 2 or higher</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              
+              <label for="unitType2">Unit type:</label>
+              <select class="form-control" #unitType2="ngModel" name="unitType2{{i}}" ngModel required>
+                <option value="CM">CM</option>
+                <option value="MM">MM</option>
+                <option value="KM">KM</option>
+                <option value="KG">KG</option>
+              </select>
+             
+              <div class="alert alert-danger" *ngIf='unitType2.touched && unitType2.invalid'>
+                Please select a unitType
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary" [disabled]="!f.valid"> submit</button>
+
+      <button class="btn btn-default ml-1" (click)="addNewRow()">add a another link</button>
+
+    </form>
+  </div>
+</div>
