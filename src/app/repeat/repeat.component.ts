@@ -12,8 +12,7 @@ export class RepeatComponent implements OnInit {
 
   newItem: any = [
     {
-      'name': '',
-      'productGroup': '',
+     
       'unitValue': '',
       'unitType': '',
       'unitvalue2': '',

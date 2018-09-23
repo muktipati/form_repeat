@@ -1,0 +1,40 @@
+<form [formGroup]='frm'>
+  <div class="col-lg-12">
+    Name:
+    <input type="text" class="form-control" formControlName="first_name">
+    <br>
+    <p class="alert alert-danger" *ngIf="frm.get('first_name').errors && frm.get('first_name').touched">
+      <span *ngIf="frm.get('first_name').errors['required']">name required</span>
+    </p>
+  </div>
+  <div class="col-lg-12">
+    department:
+    <input type="text" class="form-control" formControlName="department">
+    <br>
+    <p class="alert alert-danger" *ngIf="frm.get('department').errors && frm.get('department').touched">
+      <span *ngIf="frm.get('department').errors['required']">name required</span>
+    </p>
+  </div>
+  <button class="btn btn-primary" (click)="addpatientsForm()">[ + ]</button>
+  <div class="col-lg-12" fromArrayName="patients">
+    <div *ngFor="let x of frm.get('patients').controls; let i = index;">
+      <div [formGroupName]='i'>
+        <div class="card">
+           <div class="card-body">
+            <div>
+              <label for="patient_name">Patient's Name</label>
+              <input type="text" name="patient_name" class="form-control" formControlName="patient_name">
+            </div>
+            <div>
+              <label for="diseas">Disease's Name</label>
+              <input type="text" name="diseas" class="form-control" formControlName="patient_disease">
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</form>

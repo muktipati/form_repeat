@@ -1,0 +1,36 @@
+<div class="container">
+  <h3 >{{ title }}</h3>
+<form [formGroup]="searchForm">
+<label for="search">Search YouTube</label>
+<br />
+<input formControlName="search" id="search" />
+<div *ngFor="let result of results | async">
+<a [href]="'https://www.youtube.com/watch?v=' + result.id.videoId" target="_blank">
+{{result.snippet.title}}
+</a>
+<p>{{result.snippet.description}}</p>
+<img [src]="result.snippet.thumbnails.default.url" style="width: 100%; max-width: 250px;" />
+</div>
+</form>
+</div>
+
+
+<!-- <div class="form-row">
+  <div class="form-group col-md-6">
+    <label for="namew">Name</label>
+    <div class="input-group">
+
+      <input type="text" class="form-control" id="name"  [(ngModel)]="ngName">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button" (click)="add()">add</button>
+      </span>
+    </div>
+  </div>
+
+</div>
+<ul *ngIf="addname">
+    <li *ngFor="let a of addName">
+      <span>{{a.name}}</span>
+      <span><button class="btn btn-info" type="button" (click)="edit(a)">Edit</button></span>
+    </li>
+  </ul> -->
