@@ -30,6 +30,7 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { RouteInfo } from './sidebar.metadata';
 import { DoctorComponent } from './doctor/doctor.component';
 import { DoctorInfoComponent } from './doctor/doctor-info/doctor-info.component';
+import { InputFormatDirective } from './input-format.directive';
 // const appRoutes: Routes = [
 //   { path: '', component: HomeComponent },
 //   { path: 'about',      component: AboutComponent } 
@@ -53,7 +54,8 @@ import { DoctorInfoComponent } from './doctor/doctor-info/doctor-info.component'
     DynamicformtwoComponent,
     BreadcrumbComponent,
     DoctorComponent,
-    DoctorInfoComponent
+    DoctorInfoComponent,
+    InputFormatDirective
   ],
   imports: [
     FormsModule,
