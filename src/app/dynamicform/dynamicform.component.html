@@ -12,21 +12,26 @@
     <input type="text" class="form-control" formControlName="department">
     <br>
     <p class="alert alert-danger" *ngIf="frm.get('department').errors && frm.get('department').touched">
-      <span *ngIf="frm.get('department').errors['required']">name required</span>
+      <span *ngIf="frm.get('department').errors['required']">department required</span>
     </p>
   </div>
   <button class="btn btn-primary" (click)="addpatientsForm()">[ + ]</button>
-  <div class="col-lg-12" fromArrayName="patients">
+  <div class="col-lg-12" formArrayName="patients">
     <div *ngFor="let x of frm.get('patients').controls; let i = index;">
       <div [formGroupName]='i'>
         <div class="card">
+          <div>
+          <p class="pull-right mr-2" (click)="delpatientsForm(i)"><i class="fa fa-trash"></i></p>
+          <h5 class="pull-left ml-2">patient Number #{{i+1}}</h5>
+          </div>
+          
            <div class="card-body">
             <div>
               <label for="patient_name">Patient's Name</label>
               <input type="text" name="patient_name" class="form-control" formControlName="patient_name">
             </div>
             <div>
-              <label for="diseas">Disease's Name</label>
+              <label for="diseas">Disease Name</label>
               <input type="text" name="diseas" class="form-control" formControlName="patient_disease">
             </div>
           </div>

@@ -1,0 +1,12 @@
+<div class="card-deck">
+  <div class="card">
+    <img class="card-img-top img-height" [src]="info.doctor_img" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{info.doctor_name}}</h5>
+      <p class="card-text">{{ info.doctor_speciality}}</p>
+      <p class="card-text">Age : {{ info.age}}</p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Location {{info.doctor_hospital}}</small>
+    </div>
+  </div>

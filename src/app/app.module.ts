@@ -2,13 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CustomFormsModule } from 'ngx-custom-validators';
-import { StorageServiceModule} from 'angular-webstorage-service';
+import { StorageServiceModule } from 'angular-webstorage-service';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { PromiseService } from './promise.service';
-import {HttpModule} from '@angular/http';
+import { HttpModule } from '@angular/http';
 import { Obs1Component } from './obs1/obs1.component';
 import { TeplateFormComponent } from './teplate-form/teplate-form.component';
 import { RepeatComponent } from './repeat/repeat.component';
@@ -26,6 +26,10 @@ import { TestpipeComponent } from './testpipe/testpipe.component';
 import { PowerPipe } from './pipes/power.pipe';
 import { DynamicformtwoComponent } from './dynamicformtwo/dynamicformtwo.component';
 import { repeatWhen } from 'rxjs/operators';
+import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { RouteInfo } from './sidebar.metadata';
+import { DoctorComponent } from './doctor/doctor.component';
+import { DoctorInfoComponent } from './doctor/doctor-info/doctor-info.component';
 // const appRoutes: Routes = [
 //   { path: '', component: HomeComponent },
 //   { path: 'about',      component: AboutComponent } 
@@ -46,16 +50,33 @@ import { repeatWhen } from 'rxjs/operators';
     Doublepipe,
     PowerPipe,
     TestpipeComponent,
-    DynamicformtwoComponent
+    DynamicformtwoComponent,
+    BreadcrumbComponent,
+    DoctorComponent,
+    DoctorInfoComponent
   ],
   imports: [
     FormsModule,
     // RouterModule.forRoot(appRoutes),  
     RouterModule.forRoot([
-      {path :'',component:HomeComponent},
-      {path :'about',component:AboutComponent},
-      {path :'repeat',component:RepeatComponent}
+      {
+        path: '', component: HomeComponent,
+        data: {
+          title: 'home',
+          urls: [{ title: 'home', url: '/home' }, { title: 'home' }]
+        }
+      },
+      {
+        path: 'about', component: AboutComponent,
+        data: {
+          title: 'about',
+          urls: [{ title: 'home', url: '/home' }, { title: 'about' }]
+        }
+      },
+      { path: 'repeat', component: RepeatComponent },
+
     ]),
+
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAFgM81Qz-SwfTzUsr4F51AgDj0HdN88CQ'
     }),
@@ -66,7 +87,7 @@ import { repeatWhen } from 'rxjs/operators';
     CustomFormsModule,
     ReactiveFormsModule,
     HttpClientModule
-  
+
   ],
   providers: [PromiseService],
   bootstrap: [AppComponent]

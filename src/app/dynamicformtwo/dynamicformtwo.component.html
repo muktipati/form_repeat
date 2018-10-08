@@ -1,3 +1,63 @@
-<p>
-  dynamicformtwo works!
-</p>
+<div class="container">
+  <form [formGroup]='fm'>
+    <div class="col-lg-7">
+      Company Name:
+      <input type="text" class="form-control" formControlName="company_name">
+      <br>
+       <p class="alert alert-danger" *ngIf="fm.get('company_name').errors && fm.get('company_name').touched">
+        <span *ngIf="fm.get('company_name').errors['required']"> Company name required</span>
+      </p> 
+    </div>
+    <div class="col-lg-7">
+        Company Location:
+        <input type="text" class="form-control" formControlName="company_location">
+        <br>
+         <p class="alert alert-danger" *ngIf="fm.get('company_location').errors && fm.get('company_location').touched">
+          <span *ngIf="fm.get('company_location').errors['required']"> Company Location</span>
+        </p> 
+      </div>
+    <div class="col-lg-7">
+        Picture
+        <input type="text" class="form-control" formControlName="company_pic" placeholder="enter company url for pic">
+        <br>
+        <p class="alert alert-danger" *ngIf="fm.get('company_pic').errors && fm.get('company_pic').touched">
+          <span *ngIf="fm.get('company_pic').errors['required']">picture Url is required </span>
+        </p>
+      </div>
+    <button class="btn btn-primary" (click)="addEmpForm()">[ + ]</button>
+     <div class="col-lg-5" formArrayName="employess">
+      <div *ngFor="let x of fm.get('employess').controls; let i = index;">
+        <div [formGroupName]='i'>
+          <div class="card mt-2">
+            <div>
+            <p class="pull-right mr-2" (click)="removeEmp(i)"><i class="fa fa-trash"></i></p>
+            <h5 class="pull-left ml-2">employess Number #{{i+1}}</h5>
+            </div>
+            
+             <div class="card-body">
+              <div>
+                <label for="empname">employe's Name</label>
+                <input type="text" name="empname" class="form-control" formControlName="emp_name">
+                <!-- <br>
+                <p class="alert alert-danger" *ngIf="fm.get('employess.emp_name').errors && fm.get('employess.emp_name').touched">
+                 <span *ngIf="fm.get('employess.emp_name').errors['required']"> Company name required</span>
+               </p> -->
+              </div>
+              <div>
+                <label for="Email">employee Email</label>
+                <input type="text" name="Email" class="form-control" formControlName="emp_email">
+              </div>
+              <div>
+                  <label for="dept">employee department</label>
+                  <input type="text" name="dept" class="form-control" formControlName="emp_department">
+                </div>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+  
+    </div>
+    <button class="btn btn-primary mt-2" [disabled]="!fm.valid">save</button>
+  </form>
+</div>
